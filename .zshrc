@@ -28,14 +28,23 @@ if [ -f '/Users/yuta/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/yuta
 alias dc=docker-compose
 alias ll=ll
 alias l=ll
-function ll() {
+alias cd="cdls"
+
+function ll() 
+{
     ls -la -G;
-    pwd | printf "\033[36m$(CAT)\033[m\n";
 }
-function l() {
+
+function l() 
+{
     ls -l -G;
-    pwd | printf "\033[36m$(CAT)\033[m\n";
 }
+
+function cdls ()
+{
+    \cd "$@" && l
+}
+
 # lsの色分け
 export LSCOLORS=Cxfxcxdxbxegedabagacad
 
@@ -115,4 +124,5 @@ function rprompt-git-current-branch {
   # ブランチ名を色付きで表示する
   echo "${branch_status}[$branch_name]"
 }
+
 
